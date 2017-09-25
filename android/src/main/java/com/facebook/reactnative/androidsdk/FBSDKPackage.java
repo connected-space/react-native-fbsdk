@@ -34,7 +34,7 @@ import java.util.List;
 
 public class FBSDKPackage implements ReactPackage {
 
-    public static final String VERSION_TO_RELEASE = "ReactNative-v0.6.1";
+    public static final String VERSION_TO_RELEASE = "ReactNative-v0.6.0";
 
     private CallbackManager mCallbackManager;
     public FBSDKPackage(CallbackManager callbackManager) {
@@ -59,6 +59,11 @@ public class FBSDKPackage implements ReactPackage {
     }
 
     @Override
+    public List<Class<? extends JavaScriptModule>> createJSModules() {
+        return Collections.emptyList();
+    }
+
+    @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         return Arrays.<ViewManager>asList(
                 new FBLikeViewManager(),
@@ -66,10 +71,5 @@ public class FBSDKPackage implements ReactPackage {
                 new FBSendButtonManager(),
                 new FBShareButtonManager()
         );
-    }
-
-    // Deprecated in RN 0.47.0
-    public List<Class<? extends JavaScriptModule>> createJSModules() {
-        return Collections.emptyList();
     }
 }
